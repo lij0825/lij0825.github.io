@@ -53,14 +53,18 @@ function App() {
     if (!data) return null;
 
     return (
-      <div>
-        <h3 className="text-3xl font-bold text-slate-800 dark:text-white">{data.title}</h3>
-        <p className="text-lg text-slate-500 dark:text-gray-400 mt-2 mb-6">{data.summary}</p>
-        <div className="flex flex-wrap gap-x-6 gap-y-2 mb-6">
+      <div className="overflow-hidden">
+        <h3 className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-white break-words">
+          {data.title}
+        </h3>
+        <p className="text-base md:text-lg text-slate-500 dark:text-gray-400 mt-2 mb-6 break-words">
+          {data.summary}
+        </p>
+        <div className="flex flex-wrap gap-x-4 md:gap-x-6 gap-y-2 mb-6 text-sm md:text-base">
           {data.meta.map((item: { icon: string; text: string }, index: number) => (
             <div key={index} className="flex items-center text-slate-500 dark:text-gray-400">
               <i className={`fas ${item.icon} mr-2`}></i>
-              <span>{item.text}</span>
+              <span className="break-words">{item.text}</span>
             </div>
           ))}
         </div>
@@ -68,27 +72,31 @@ function App() {
           {data.tech.map((t: string, index: number) => (
             <span
               key={index}
-              className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm font-medium mr-2 mb-2 px-2.5 py-0.5 rounded"
+              className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs md:text-sm font-medium mr-2 mb-2 px-2.5 py-0.5 rounded"
             >
               {t}
             </span>
           ))}
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          <div>
-            <h4 className="text-xl font-bold text-slate-800 dark:text-white border-b dark:border-gray-600 pb-2 mb-4">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+          <div className="overflow-hidden">
+            <h4 className="text-lg md:text-xl font-bold text-slate-800 dark:text-white border-b dark:border-gray-600 pb-2 mb-4">
               문제 해결 과정 (Action)
             </h4>
             {data.actions.map((action: { title: string; detail: string }, index: number) => (
               <div key={index} className="mb-4">
-                <h5 className="font-semibold text-slate-700 dark:text-gray-300">{action.title}</h5>
-                <p className="text-slate-600 dark:text-gray-400 whitespace-pre-line">{action.detail}</p>
+                <h5 className="font-semibold text-sm md:text-base text-slate-700 dark:text-gray-300 break-words">
+                  {action.title}
+                </h5>
+                <p className="text-xs md:text-sm text-slate-600 dark:text-gray-400 whitespace-pre-line break-words">
+                  {action.detail}
+                </p>
               </div>
             ))}
           </div>
-          <div>
-            <h4 className="text-xl font-bold text-slate-800 dark:text-white border-b dark:border-gray-600 pb-2 mb-4">
+          <div className="overflow-hidden">
+            <h4 className="text-lg md:text-xl font-bold text-slate-800 dark:text-white border-b dark:border-gray-600 pb-2 mb-4">
               핵심 성과 (Result)
             </h4>
             {data.results.map(
@@ -104,11 +112,18 @@ function App() {
                 },
                 index: number
               ) => (
-                <div key={index} className="mb-6 p-6 rounded-lg bg-slate-50 dark:bg-gray-700">
-                  <h5 className="font-bold text-lg text-slate-800 dark:text-white">{result.title}</h5>
-                  <p className="text-slate-600 dark:text-gray-300 mt-2 mb-4">{result.detail}</p>
+                <div
+                  key={index}
+                  className="mb-6 p-4 md:p-6 rounded-lg bg-slate-50 dark:bg-gray-700 overflow-hidden"
+                >
+                  <h5 className="font-bold text-base md:text-lg text-slate-800 dark:text-white break-words">
+                    {result.title}
+                  </h5>
+                  <p className="text-xs md:text-sm text-slate-600 dark:text-gray-300 mt-2 mb-4 break-words">
+                    {result.detail}
+                  </p>
                   {"chart" in result && result.chart && (
-                    <div className="chart-container">
+                    <div className="chart-container w-full overflow-hidden">
                       <Bar
                         data={result.chart.data}
                         options={result.chart.options as ChartOptions<"bar">}
@@ -125,8 +140,8 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-gray-900 py-8 transition-colors duration-300">
-      <div className="container mx-auto p-4 md:p-8 max-w-6xl">
+    <div className="min-h-screen bg-slate-50 dark:bg-gray-900 py-4 md:py-8 transition-colors duration-300">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-6xl">
         {/* 다크 모드 토글 버튼 */}
         <div className="flex justify-end mb-4 print:hidden">
           <button
@@ -142,7 +157,7 @@ function App() {
           </button>
         </div>
 
-        <header className="text-center mb-12">
+        <header className="text-center mb-8 md:mb-12">
           {/* 프로필 이미지 */}
           <div className="flex justify-center mb-6">
             <img
@@ -152,9 +167,13 @@ function App() {
             />
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-800 dark:text-white">이인준</h1>
-          <p className="text-xl md:text-2xl text-slate-600 dark:text-gray-300 mt-2">Backend Engineer</p>
-          <div className="flex justify-center items-center space-x-6 mt-6 text-slate-500 dark:text-gray-400">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 dark:text-white">
+            이인준
+          </h1>
+          <p className="text-lg md:text-xl lg:text-2xl text-slate-600 dark:text-gray-300 mt-2">
+            Backend Engineer
+          </p>
+          <div className="flex flex-col md:flex-row justify-center items-center md:space-x-6 space-y-2 md:space-y-0 mt-6 text-slate-500 dark:text-gray-400 text-sm md:text-base">
             <a
               href="mailto:dldlswns890@gmail.com"
               className="hover:text-blue-500 transition-colors"
@@ -175,9 +194,14 @@ function App() {
           </div>
         </header>
 
-        <section id="summary" className="mb-12 bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm">
-          <h2 className="text-2xl font-bold text-slate-800 dark:text-white mb-4 text-center">SUMMARY</h2>
-          <p className="text-center text-slate-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+        <section
+          id="summary"
+          className="mb-8 md:mb-12 bg-white dark:bg-gray-800 p-6 md:p-8 rounded-xl shadow-sm"
+        >
+          <h2 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-white mb-4 text-center">
+            SUMMARY
+          </h2>
+          <p className="text-sm md:text-base text-center text-slate-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             대규모 트래픽 처리 및 성능 최적화에 강점을 가진 백엔드 개발자입니다. <br />
             Redis를 활용한 동시성 제어와 캐싱 전략으로 서비스 응답 시간을 90% 이상 단축한 경험이
             있습니다. <br />
@@ -188,27 +212,43 @@ function App() {
           </p>
         </section>
 
-        <section id="key-achievements" className="mb-12">
-          <h2 className="text-2xl font-bold text-slate-800 dark:text-white mb-6 text-center">핵심 성과 지표</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-            <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm">
-              <p className="text-4xl font-bold text-blue-500 dark:text-blue-400">685%</p>
-              <p className="text-slate-500 dark:text-gray-300 mt-2">동시성 처리량(TPS) 향상</p>
+        <section id="key-achievements" className="mb-8 md:mb-12">
+          <h2 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-white mb-6 text-center">
+            핵심 성과 지표
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 text-center">
+            <div className="bg-white dark:bg-gray-700 p-4 md:p-6 rounded-xl shadow-sm">
+              <p className="text-3xl md:text-4xl font-bold text-blue-500 dark:text-blue-400">
+                685%
+              </p>
+              <p className="text-sm md:text-base text-slate-500 dark:text-gray-300 mt-2">
+                동시성 처리량(TPS) 향상
+              </p>
             </div>
-            <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm">
-              <p className="text-4xl font-bold text-green-500 dark:text-green-400">-99.4%</p>
-              <p className="text-slate-500 dark:text-gray-300 mt-2">검색 응답 시간 단축</p>
+            <div className="bg-white dark:bg-gray-700 p-4 md:p-6 rounded-xl shadow-sm">
+              <p className="text-3xl md:text-4xl font-bold text-green-500 dark:text-green-400">
+                -99.4%
+              </p>
+              <p className="text-sm md:text-base text-slate-500 dark:text-gray-300 mt-2">
+                검색 응답 시간 단축
+              </p>
             </div>
-            <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm">
-              <p className="text-4xl font-bold text-indigo-500 dark:text-indigo-400">-93%</p>
-              <p className="text-slate-500 dark:text-gray-300 mt-2">위치 기반 검색 속도 개선</p>
+            <div className="bg-white dark:bg-gray-700 p-4 md:p-6 rounded-xl shadow-sm">
+              <p className="text-3xl md:text-4xl font-bold text-indigo-500 dark:text-indigo-400">
+                -93%
+              </p>
+              <p className="text-sm md:text-base text-slate-500 dark:text-gray-300 mt-2">
+                위치 기반 검색 속도 개선
+              </p>
             </div>
           </div>
         </section>
 
-        <section id="projects" className="mb-12">
-          <h2 className="text-2xl font-bold text-slate-800 dark:text-white mb-6 text-center">PROJECTS</h2>
-          <div className="text-center text-slate-600 dark:text-gray-300 mb-6 max-w-3xl mx-auto">
+        <section id="projects" className="mb-8 md:mb-12">
+          <h2 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-white mb-4 md:mb-6 text-center">
+            PROJECTS
+          </h2>
+          <div className="text-center text-slate-600 dark:text-gray-300 mb-4 md:mb-6 max-w-3xl mx-auto text-sm md:text-base">
             <p>
               다양한 비즈니스 문제를 기술적으로 해결한 프로젝트 경험입니다.
               <br />각 프로젝트는 문제 정의, 해결 과정, 그리고 정량적인 성과 중심으로 구성되어
@@ -219,7 +259,7 @@ function App() {
           </div>
 
           {/* 탭 */}
-          <div className="flex justify-center mb-4 border-b dark:border-gray-700 print:hidden">
+          <div className="flex flex-wrap justify-center mb-4 border-b dark:border-gray-700 print:hidden gap-2 md:gap-0">
             {(Object.keys(projectData) as ProjectId[]).map((tabId) => {
               const titles: Record<ProjectId, string> = {
                 toudeuk: "터득(TOUDEUK)",
@@ -233,7 +273,7 @@ function App() {
                     setActiveTab(tabId);
                     setShowAllProjects(false);
                   }}
-                  className={`tab-btn px-6 py-3 text-lg font-semibold border-b-2 ${
+                  className={`tab-btn px-3 py-2 md:px-6 md:py-3 text-xs md:text-sm lg:text-lg font-semibold border-b-2 whitespace-nowrap ${
                     activeTab === tabId && !showAllProjects
                       ? "tab-active"
                       : "border-transparent text-slate-500 dark:text-gray-400"
@@ -249,7 +289,7 @@ function App() {
           <div className="flex justify-center mb-8">
             <button
               onClick={() => setShowAllProjects(!showAllProjects)}
-              className="print:hidden group relative px-6 py-2.5 rounded-lg font-medium transition-all duration-300 flex items-center gap-2 border-2 border-blue-500 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-500 hover:text-white hover:shadow-lg"
+              className="print:hidden group relative px-4 py-2 md:px-6 md:py-2.5 text-sm md:text-base rounded-lg font-medium transition-all duration-300 flex items-center gap-2 border-2 border-blue-500 dark:border-blue-400 text-blue-600 dark:text-blue-400 hover:bg-blue-500 hover:text-white hover:shadow-lg"
             >
               <i
                 className={`fas fa-${
@@ -269,13 +309,20 @@ function App() {
                 return (
                   <div
                     key={projectId}
-                    className="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-xl shadow-sm page-break-inside-avoid"
+                    className="bg-white dark:bg-gray-800 p-4 md:p-6 lg:p-8 rounded-xl shadow-sm page-break-inside-avoid"
                   >
-                    <h3 className="text-3xl font-bold text-slate-800 dark:text-white">{data.title}</h3>
-                    <p className="text-lg text-slate-500 dark:text-gray-400 mt-2 mb-6">{data.summary}</p>
-                    <div className="flex flex-wrap gap-x-6 gap-y-2 mb-6">
+                    <h3 className="text-2xl md:text-3xl font-bold text-slate-800 dark:text-white">
+                      {data.title}
+                    </h3>
+                    <p className="text-base md:text-lg text-slate-500 dark:text-gray-400 mt-2 mb-6">
+                      {data.summary}
+                    </p>
+                    <div className="flex flex-wrap gap-x-4 md:gap-x-6 gap-y-2 mb-6 text-sm md:text-base">
                       {data.meta.map((item: { icon: string; text: string }, index: number) => (
-                        <div key={index} className="flex items-center text-slate-500 dark:text-gray-400">
+                        <div
+                          key={index}
+                          className="flex items-center text-slate-500 dark:text-gray-400"
+                        >
                           <i className={`fas ${item.icon} mr-2`}></i>
                           <span>{item.text}</span>
                         </div>
@@ -285,29 +332,33 @@ function App() {
                       {data.tech.map((t: string, index: number) => (
                         <span
                           key={index}
-                          className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm font-medium mr-2 mb-2 px-2.5 py-0.5 rounded"
+                          className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs md:text-sm font-medium mr-2 mb-2 px-2.5 py-0.5 rounded"
                         >
                           {t}
                         </span>
                       ))}
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-8">
-                      <div>
-                        <h4 className="text-xl font-bold text-slate-800 dark:text-white border-b dark:border-gray-600 pb-2 mb-4">
+                    <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+                      <div className="overflow-hidden">
+                        <h4 className="text-lg md:text-xl font-bold text-slate-800 dark:text-white border-b dark:border-gray-600 pb-2 mb-4">
                           문제 해결 과정 (Action)
                         </h4>
                         {data.actions.map(
                           (action: { title: string; detail: string }, index: number) => (
                             <div key={index} className="mb-4">
-                              <h5 className="font-semibold text-slate-700 dark:text-gray-300">{action.title}</h5>
-                              <p className="text-slate-600 dark:text-gray-400 whitespace-pre-line">{action.detail}</p>
+                              <h5 className="font-semibold text-sm md:text-base text-slate-700 dark:text-gray-300 break-words">
+                                {action.title}
+                              </h5>
+                              <p className="text-xs md:text-sm text-slate-600 dark:text-gray-400 whitespace-pre-line break-words">
+                                {action.detail}
+                              </p>
                             </div>
                           )
                         )}
                       </div>
-                      <div>
-                        <h4 className="text-xl font-bold text-slate-800 dark:text-white border-b dark:border-gray-600 pb-2 mb-4">
+                      <div className="overflow-hidden">
+                        <h4 className="text-lg md:text-xl font-bold text-slate-800 dark:text-white border-b dark:border-gray-600 pb-2 mb-4">
                           핵심 성과 (Result)
                         </h4>
                         {data.results.map(
@@ -323,11 +374,18 @@ function App() {
                             },
                             index: number
                           ) => (
-                            <div key={index} className="mb-6 p-6 rounded-lg bg-slate-50 dark:bg-gray-700">
-                              <h5 className="font-bold text-lg text-slate-800 dark:text-white">{result.title}</h5>
-                              <p className="text-slate-600 dark:text-gray-300 mt-2 mb-4">{result.detail}</p>
+                            <div
+                              key={index}
+                              className="mb-6 p-4 md:p-6 rounded-lg bg-slate-50 dark:bg-gray-700 overflow-hidden"
+                            >
+                              <h5 className="font-bold text-base md:text-lg text-slate-800 dark:text-white break-words">
+                                {result.title}
+                              </h5>
+                              <p className="text-xs md:text-sm text-slate-600 dark:text-gray-300 mt-2 mb-4 break-words">
+                                {result.detail}
+                              </p>
                               {"chart" in result && result.chart && (
-                                <div className="chart-container">
+                                <div className="chart-container w-full overflow-hidden">
                                   <Bar
                                     data={result.chart.data}
                                     options={result.chart.options as ChartOptions<"bar">}
@@ -367,38 +425,48 @@ function App() {
             </div>
           ) : (
             // 탭으로 보기 (기존)
-            <div id="project-content" className="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-xl shadow-sm">
+            <div
+              id="project-content"
+              className="bg-white dark:bg-gray-800 p-4 md:p-6 lg:p-8 rounded-xl shadow-sm overflow-hidden"
+            >
               {renderProjectContent()}
             </div>
           )}
         </section>
 
-        <section id="skills" className="mb-12">
-          <h2 className="text-2xl font-bold text-slate-800 dark:text-white mb-6 text-center">SKILLS</h2>
-          <p className="text-center text-slate-500 dark:text-gray-400 text-sm mb-6">
+        <section id="skills" className="mb-8 md:mb-12">
+          <h2 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-white mb-4 md:mb-6 text-center">
+            SKILLS
+          </h2>
+          <p className="text-center text-slate-500 dark:text-gray-400 text-xs md:text-sm mb-4 md:mb-6">
             <i className="fas fa-info-circle mr-2"></i>
             스킬에 마우스를 올리면 상세 정보와 숙련도를 확인할 수 있습니다
           </p>
-          <div id="skills-content" className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+          <div
+            id="skills-content"
+            className="bg-white dark:bg-gray-800 p-4 md:p-6 lg:p-8 rounded-xl shadow-sm"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 md:gap-x-6 lg:gap-x-8 gap-y-6 md:gap-y-8 lg:gap-y-12">
               {Object.entries(skillsData).map(
                 ([category, skills]: [
                   string,
                   Array<{ name: string; icon: string; level: number; description: string }>
                 ]) => (
                   <div key={category}>
-                    <h4 className="font-bold text-slate-700 dark:text-gray-300 mb-4">{category}</h4>
-                    <div className="flex flex-wrap gap-3">
+                    <h4 className="font-bold text-slate-700 dark:text-gray-300 mb-3 md:mb-4 text-sm md:text-base">
+                      {category}
+                    </h4>
+                    <div className="flex flex-wrap gap-2 md:gap-3">
                       {skills.map(
                         (
                           skill: { name: string; icon: string; level: number; description: string },
                           index: number
                         ) => (
                           <div key={index} className="relative group">
-                            <span className="bg-slate-100 dark:bg-gray-700 text-slate-700 dark:text-gray-200 text-sm font-medium px-3 py-1.5 rounded-full cursor-pointer transition-colors hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-800 dark:hover:text-blue-200 flex items-center gap-2">
+                            <span className="bg-slate-100 dark:bg-gray-700 text-slate-700 dark:text-gray-200 text-xs md:text-sm font-medium px-2.5 py-1 md:px-3 md:py-1.5 rounded-full cursor-pointer transition-colors hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-800 dark:hover:text-blue-200 flex items-center gap-1.5 md:gap-2">
                               {skill.icon.startsWith("iconify:") ? (
                                 <span
-                                  className="iconify w-4 h-4"
+                                  className="iconify w-3.5 h-3.5 md:w-4 md:h-4"
                                   data-icon={skill.icon.replace("iconify:", "")}
                                 ></span>
                               ) : (
@@ -407,9 +475,11 @@ function App() {
                               {skill.name}
                             </span>
                             {/* 툴팁 */}
-                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-xl invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity duration-300 z-10 border border-slate-200 dark:border-gray-600">
+                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 md:w-72 p-3 md:p-4 bg-white dark:bg-gray-800 rounded-lg shadow-xl invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity duration-300 z-10 border border-slate-200 dark:border-gray-600">
                               <div className="flex items-center justify-between mb-2">
-                                <h5 className="font-bold text-slate-800 dark:text-white">{skill.name}</h5>
+                                <h5 className="font-bold text-slate-800 dark:text-white">
+                                  {skill.name}
+                                </h5>
                                 <div className="flex space-x-1 text-sm">
                                   {[1, 2, 3, 4, 5].map((star) => (
                                     <i
@@ -442,19 +512,27 @@ function App() {
           </div>
         </section>
 
-        <section id="timeline" className="mb-12">
-          <h2 className="text-2xl font-bold text-slate-800 dark:text-white mb-8 text-center">
+        <section id="timeline" className="mb-8 md:mb-12">
+          <h2 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-white mb-6 md:mb-8 text-center">
             EDUCATION & ACTIVITIES
           </h2>
-          <div className="relative pl-20">
-            <div className="absolute left-12 h-full border-l-2 border-slate-200 dark:border-gray-600"></div>
+          <div className="relative pl-12 md:pl-16 lg:pl-20">
+            <div className="absolute left-6 md:left-8 lg:left-12 h-full border-l-2 border-slate-200 dark:border-gray-600"></div>
             <div id="timeline-content">
               {timelineData.map(
                 (item: { period: string; title: string; description?: string }, index: number) => (
-                  <div key={index} className="relative pb-8 timeline-item">
-                    <p className="text-sm text-slate-500 dark:text-gray-400">{item.period}</p>
-                    <h4 className="font-bold text-slate-800 dark:text-white mt-1">{item.title}</h4>
-                    {item.description && <p className="text-slate-600 dark:text-gray-300">{item.description}</p>}
+                  <div key={index} className="relative pb-6 md:pb-8 timeline-item">
+                    <p className="text-xs md:text-sm text-slate-500 dark:text-gray-400">
+                      {item.period}
+                    </p>
+                    <h4 className="font-bold text-sm md:text-base text-slate-800 dark:text-white mt-1">
+                      {item.title}
+                    </h4>
+                    {item.description && (
+                      <p className="text-xs md:text-sm text-slate-600 dark:text-gray-300">
+                        {item.description}
+                      </p>
+                    )}
                   </div>
                 )
               )}
