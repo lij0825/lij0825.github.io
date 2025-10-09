@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { projectData, skillsData, timelineData } from "./data";
 import { Bar } from "react-chartjs-2";
 import {
@@ -19,6 +19,20 @@ type ProjectId = keyof typeof projectData;
 
 function App() {
   const [activeTab, setActiveTab] = useState<ProjectId>("toudeuk");
+  const [showAllProjects, setShowAllProjects] = useState(false);
+
+  // 인쇄 시 자동으로 전체 프로젝트 보기
+  useEffect(() => {
+    const handleBeforePrint = () => {
+      setShowAllProjects(true);
+    };
+
+    window.addEventListener('beforeprint', handleBeforePrint);
+    
+    return () => {
+      window.removeEventListener('beforeprint', handleBeforePrint);
+    };
+  }, []);
 
   const renderProjectContent = () => {
     const data = projectData[activeTab];
@@ -165,7 +179,7 @@ function App() {
 
         <section id="projects" className="mb-12">
           <h2 className="text-2xl font-bold text-slate-800 mb-6 text-center">PROJECTS</h2>
-          <div className="text-center text-slate-600 mb-8 max-w-3xl mx-auto">
+          <div className="text-center text-slate-600 mb-6 max-w-3xl mx-auto">
             <p>
               다양한 비즈니스 문제를 기술적으로 해결한 프로젝트 경험입니다.
               <br />각 프로젝트는 문제 정의, 해결 과정, 그리고 정량적인 성과 중심으로 구성되어
@@ -174,29 +188,128 @@ function App() {
               탭을 클릭하여 각 프로젝트의 상세 내용을 확인하실 수 있습니다.
             </p>
           </div>
-          <div className="flex justify-center mb-8 border-b">
-            {(Object.keys(projectData) as ProjectId[]).map((tabId) => {
-              const titles: Record<ProjectId, string> = {
-                toudeuk: "터득(TOUDEUK)",
-                library: "나의 작은 도서관",
-                ssapick: "SSAPICK",
-              };
-              return (
-                <button
-                  key={String(tabId)}
-                  onClick={() => setActiveTab(tabId)}
-                  className={`tab-btn px-6 py-3 text-lg font-semibold border-b-2 ${
-                    activeTab === tabId ? "tab-active" : "border-transparent text-slate-500"
-                  }`}
-                >
-                  {titles[tabId]}
-                </button>
-              );
-            })}
+          
+          {/* 탭과 전체 보기 버튼 */}
+          <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-8">
+            <div className="flex border-b print:hidden">
+              {(Object.keys(projectData) as ProjectId[]).map((tabId) => {
+                const titles: Record<ProjectId, string> = {
+                  toudeuk: "터득(TOUDEUK)",
+                  library: "나의 작은 도서관",
+                  ssapick: "SSAPICK",
+                };
+                return (
+                  <button
+                    key={String(tabId)}
+                    onClick={() => {
+                      setActiveTab(tabId);
+                      setShowAllProjects(false);
+                    }}
+                    className={`tab-btn px-6 py-3 text-lg font-semibold border-b-2 ${
+                      activeTab === tabId && !showAllProjects
+                        ? "tab-active"
+                        : "border-transparent text-slate-500"
+                    }`}
+                  >
+                    {titles[tabId]}
+                  </button>
+                );
+              })}
+            </div>
+            
+            <button
+              onClick={() => setShowAllProjects(!showAllProjects)}
+              className="print:hidden bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium px-5 py-2.5 rounded-lg transition-colors flex items-center gap-2"
+            >
+              <i className={`fas fa-${showAllProjects ? 'grip-lines' : 'list'}`}></i>
+              {showAllProjects ? '탭으로 보기' : '전체 프로젝트 보기'}
+            </button>
           </div>
-          <div id="project-content" className="bg-white p-6 md:p-8 rounded-xl shadow-sm">
-            {renderProjectContent()}
-          </div>
+          
+          {/* 프로젝트 내용 */}
+          {showAllProjects ? (
+            // 전체 프로젝트 보기
+            <div className="space-y-8">
+              {(Object.keys(projectData) as ProjectId[]).map((projectId) => {
+                const data = projectData[projectId];
+                return (
+                  <div key={projectId} className="bg-white p-6 md:p-8 rounded-xl shadow-sm page-break-inside-avoid">
+                    <h3 className="text-3xl font-bold text-slate-800">{data.title}</h3>
+                    <p className="text-lg text-slate-500 mt-2 mb-6">{data.summary}</p>
+                    <div className="flex flex-wrap gap-x-6 gap-y-2 mb-6">
+                      {data.meta.map((item: { icon: string; text: string }, index: number) => (
+                        <div key={index} className="flex items-center text-slate-500">
+                          <i className={`fas ${item.icon} mr-2`}></i>
+                          <span>{item.text}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex flex-wrap mb-8">
+                      {data.tech.map((t: string, index: number) => (
+                        <span
+                          key={index}
+                          className="bg-blue-100 text-blue-800 text-sm font-medium mr-2 mb-2 px-2.5 py-0.5 rounded"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-8">
+                      <div>
+                        <h4 className="text-xl font-bold text-slate-800 border-b pb-2 mb-4">
+                          문제 해결 과정 (Action)
+                        </h4>
+                        {data.actions.map((action: { title: string; detail: string }, index: number) => (
+                          <div key={index} className="mb-4">
+                            <h5 className="font-semibold text-slate-700">{action.title}</h5>
+                            <p className="text-slate-600 whitespace-pre-line">{action.detail}</p>
+                          </div>
+                        ))}
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-bold text-slate-800 border-b pb-2 mb-4">
+                          핵심 성과 (Result)
+                        </h4>
+                        {data.results.map(
+                          (
+                            result: {
+                              title: string;
+                              detail: string;
+                              chart?: {
+                                type: "bar";
+                                data: ChartData<"bar">;
+                                options: ChartOptions<"bar">;
+                              };
+                            },
+                            index: number
+                          ) => (
+                            <div key={index} className="mb-6 p-6 rounded-lg bg-slate-50">
+                              <h5 className="font-bold text-lg text-slate-800">{result.title}</h5>
+                              <p className="text-slate-600 mt-2 mb-4">{result.detail}</p>
+                              {"chart" in result && result.chart && (
+                                <div className="chart-container">
+                                  <Bar
+                                    data={result.chart.data}
+                                    options={result.chart.options as ChartOptions<"bar">}
+                                  />
+                                </div>
+                              )}
+                            </div>
+                          )
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            // 탭으로 보기 (기존)
+            <div id="project-content" className="bg-white p-6 md:p-8 rounded-xl shadow-sm">
+              {renderProjectContent()}
+            </div>
+          )}
         </section>
 
         <section id="skills" className="mb-12">
