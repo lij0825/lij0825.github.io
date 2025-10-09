@@ -398,4 +398,9 @@ export const timelineData = [
     description: "컴퓨터정보통신공학부",
   },
   { period: "2022.09 - 2022.12", title: "지마켓 산학 협력 프로젝트 참여", description: "" },
+  {
+    period: "2014.03 - 2017.02",
+    title: "의정부고등학교 졸업",
+    description: "",
+  },
 ];
