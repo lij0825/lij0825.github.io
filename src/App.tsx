@@ -347,21 +347,54 @@ function App() {
         <section id="skills" className="mb-12">
           <h2 className="text-2xl font-bold text-slate-800 mb-6 text-center">SKILLS</h2>
           <div id="skills-content" className="bg-white p-8 rounded-xl shadow-sm">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
               {Object.entries(skillsData).map(
-                ([category, skills]: [string, Array<{ name: string; icon: string }>]) => (
+                ([
+                  category,
+                  skills,
+                ]: [
+                  string,
+                  Array<{ name: string; icon: string; level: number; description: string }>
+                ]) => (
                   <div key={category}>
-                    <h4 className="font-bold text-slate-700 mb-3">{category}</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {skills.map((skill: { name: string; icon: string }, index: number) => (
-                        <span
-                          key={index}
-                          className="bg-slate-100 text-slate-700 text-sm font-medium px-3 py-1.5 rounded-full flex items-center gap-2"
-                        >
-                          <i className={skill.icon}></i>
-                          {skill.name}
-                        </span>
-                      ))}
+                    <h4 className="font-bold text-slate-700 mb-4">{category}</h4>
+                    <div className="flex flex-wrap gap-3">
+                      {skills.map(
+                        (
+                          skill: { name: string; icon: string; level: number; description: string },
+                          index: number
+                        ) => (
+                          <div key={index} className="relative group">
+                            <span className="bg-slate-100 text-slate-700 text-sm font-medium px-3 py-1.5 rounded-full cursor-pointer transition-colors hover:bg-blue-100 hover:text-blue-800 flex items-center gap-2">
+                              <i className={skill.icon}></i>
+                              {skill.name}
+                            </span>
+                            {/* 툴팁 */}
+                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 p-4 bg-white rounded-lg shadow-xl invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity duration-300 z-10 border border-slate-200">
+                              <div className="flex items-center justify-between mb-2">
+                                <h5 className="font-bold text-slate-800">{skill.name}</h5>
+                                <div className="flex space-x-1 text-sm">
+                                  {[1, 2, 3, 4, 5].map((star) => (
+                                    <i
+                                      key={star}
+                                      className={`fa-star ${
+                                        star <= skill.level ? "fas text-amber-400" : "far text-gray-300"
+                                      }`}
+                                    ></i>
+                                  ))}
+                                </div>
+                              </div>
+                              <p className="text-sm text-slate-600 leading-relaxed">
+                                {skill.description}
+                              </p>
+                              {/* 툴팁 화살표 */}
+                              <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px">
+                                <div className="border-8 border-transparent border-t-white"></div>
+                              </div>
+                            </div>
+                          </div>
+                        )
+                      )}
                     </div>
                   </div>
                 )
