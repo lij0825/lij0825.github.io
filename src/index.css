@@ -1,22 +1,35 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
+/* 다크 모드 전역 스타일 */
+.dark {
+  color-scheme: dark;
+}
+
 body {
   font-family: "Pretendard", sans-serif;
   background-color: #f8fafc;
   color: #1e293b;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark body {
+  background-color: #111827;
+  color: #f3f4f6;
 }
 
 /* Simple Icons 브랜드 컬러 */
 .si-jenkins {
-  color: #D24939;
+  color: #d24939;
 }
 
 .si-mattermost {
-  color: #0058CC;
+  color: #0058cc;
 }
 
 .si-hibernate {
-  color: #59666C;
+  color: #59666c;
 }
 
 .chart-container {
@@ -27,6 +40,10 @@ body {
   margin-right: auto;
   height: 250px;
   max-height: 300px;
+}
+
+.dark .chart-container {
+  filter: brightness(0.9);
 }
 
 @media (min-width: 768px) {
@@ -40,6 +57,12 @@ body {
   border-color: #3b82f6;
   color: #3b82f6;
   background-color: #eff6ff;
+}
+
+.dark .tab-active {
+  border-color: #60a5fa;
+  color: #60a5fa;
+  background-color: #1e3a8a;
 }
 
 .timeline-item::before {
