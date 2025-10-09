@@ -171,7 +171,7 @@ function App() {
             이인준
           </h1>
           <p className="text-lg md:text-xl lg:text-2xl text-slate-600 dark:text-gray-300 mt-2">
-            Backend Engineer
+            Backend Developer
           </p>
           <div className="flex flex-col md:flex-row justify-center items-center md:space-x-6 space-y-2 md:space-y-0 mt-6 text-slate-500 dark:text-gray-400 text-sm md:text-base">
             <a
