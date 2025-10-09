@@ -167,9 +167,11 @@ function App() {
           <h2 className="text-2xl font-bold text-slate-800 mb-6 text-center">PROJECTS</h2>
           <div className="text-center text-slate-600 mb-8 max-w-3xl mx-auto">
             <p>
-              다양한 비즈니스 문제를 기술적으로 해결한 프로젝트 경험입니다. 각 프로젝트는 문제 정의,
-              해결 과정, 그리고 정량적인 성과 중심으로 구성되어 있습니다. 탭을 클릭하여 각
-              프로젝트의 상세 내용을 확인하실 수 있습니다.
+              다양한 비즈니스 문제를 기술적으로 해결한 프로젝트 경험입니다.
+              <br />각 프로젝트는 문제 정의, 해결 과정, 그리고 정량적인 성과 중심으로 구성되어
+              있습니다.
+              <br />
+              탭을 클릭하여 각 프로젝트의 상세 내용을 확인하실 수 있습니다.
             </p>
           </div>
           <div className="flex justify-center mb-8 border-b">
