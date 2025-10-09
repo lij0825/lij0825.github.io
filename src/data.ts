@@ -292,8 +292,7 @@ export const skillsData = {
       name: "MongoDB",
       icon: "fa-solid fa-database",
       level: 3,
-      description:
-        "NoSQL 데이터 모델링과 집계 파이프라인을 활용한 데이터 처리가 가능합니다.",
+      description: "NoSQL 데이터 모델링과 집계 파이프라인을 활용한 데이터 처리가 가능합니다.",
     },
   ],
   "Infra & DevOps": [
@@ -336,15 +335,13 @@ export const skillsData = {
       name: "Kafka",
       icon: "fa-solid fa-stream",
       level: 2,
-      description:
-        "이벤트 기반 아키텍처를 이해하고, 기본적인 프로듀서/컨슈머 구현이 가능합니다.",
+      description: "이벤트 기반 아키텍처를 이해하고, 기본적인 프로듀서/컨슈머 구현이 가능합니다.",
     },
     {
       name: "RabbitMQ",
       icon: "fa-solid fa-comments",
       level: 3,
-      description:
-        "STOMP 프로토콜을 활용한 실시간 메시징 시스템 구축 경험이 있습니다.",
+      description: "STOMP 프로토콜을 활용한 실시간 메시징 시스템 구축 경험이 있습니다.",
     },
     {
       name: "Redis",
@@ -366,10 +363,14 @@ export const skillsData = {
       name: "Jira",
       icon: "fa-brands fa-jira",
       level: 3,
-      description:
-        "Epic-Story-Task 구조를 이해하고, 이슈 관리와 스프린트 계획 수립이 가능합니다.",
+      description: "Epic-Story-Task 구조를 이해하고, 이슈 관리와 스프린트 계획 수립이 가능합니다.",
     },
-    { name: "Notion", icon: "fa-solid fa-book", level: 4, description: "팀 문서화와 협업에 적극 활용합니다." },
+    {
+      name: "Notion",
+      icon: "fa-solid fa-book",
+      level: 4,
+      description: "팀 문서화와 협업에 적극 활용합니다.",
+    },
     {
       name: "MatterMost",
       icon: "fa-solid fa-comment-dots",

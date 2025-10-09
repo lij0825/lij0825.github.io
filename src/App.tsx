@@ -346,13 +346,14 @@ function App() {
 
         <section id="skills" className="mb-12">
           <h2 className="text-2xl font-bold text-slate-800 mb-6 text-center">SKILLS</h2>
+          <p className="text-center text-slate-500 text-sm mb-6">
+            <i className="fas fa-info-circle mr-2"></i>
+            스킬에 마우스를 올리면 상세 정보와 숙련도를 확인할 수 있습니다
+          </p>
           <div id="skills-content" className="bg-white p-8 rounded-xl shadow-sm">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
               {Object.entries(skillsData).map(
-                ([
-                  category,
-                  skills,
-                ]: [
+                ([category, skills]: [
                   string,
                   Array<{ name: string; icon: string; level: number; description: string }>
                 ]) => (
@@ -378,7 +379,9 @@ function App() {
                                     <i
                                       key={star}
                                       className={`fa-star ${
-                                        star <= skill.level ? "fas text-amber-400" : "far text-gray-300"
+                                        star <= skill.level
+                                          ? "fas text-amber-400"
+                                          : "far text-gray-300"
                                       }`}
                                     ></i>
                                   ))}
