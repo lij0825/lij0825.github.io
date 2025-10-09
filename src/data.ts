@@ -223,16 +223,16 @@ export const skillsData = {
         "Django와 FastAPI를 활용한 백엔드 개발 경험이 있으며, 데이터 처리와 머신러닝 모델 배포에 활용합니다.",
     },
     {
-      name: "JavaScript",
-      icon: "fa-brands fa-js",
-      level: 3,
+      name: "TypeScript",
+      icon: "devicon-typescript-plain",
+      level: 4,
       description:
-        "ES6+ 문법을 활용한 모던 자바스크립트 개발이 가능하며, React를 사용한 프론트엔드 개발 경험이 있습니다.",
+        "정적 타입과 strictNullChecks로 코드 안정성을 높이고 컴파일 시 오류를 방지합니다. 제네릭, 인터페이스, 유니온 타입으로 유연하고 표현력 있는 코드를 작성합니다. async/await와 Promise로 비동기 프로그래밍의 가독성을 향상시킵니다.",
     },
     {
       name: "SQL",
       icon: "fa-solid fa-database",
-      level: 4,
+      level: 3,
       description:
         "관계형 DB에 맞는 ERD를 설계하고, 정규화와 반정규화를 할 수 있습니다. 다중 JOIN 쿼리와 인덱스를 사용하여 성능을 최적화할 수 있습니다.",
     },
@@ -306,7 +306,7 @@ export const skillsData = {
     {
       name: "Docker",
       icon: "fa-brands fa-docker",
-      level: 4,
+      level: 3,
       description:
         "다양한 프로젝트를 도커로 빌드한 경험이 있으며, 도커 컴포즈를 사용한 멀티 컨테이너 환경 구성이 가능합니다.",
     },
@@ -320,13 +320,13 @@ export const skillsData = {
     {
       name: "Prometheus",
       icon: "fa-solid fa-chart-line",
-      level: 3,
+      level: 2,
       description: "시스템 메트릭 수집과 모니터링 대시보드 구축 경험이 있습니다.",
     },
     {
       name: "Grafana",
       icon: "fa-solid fa-chart-bar",
-      level: 3,
+      level: 2,
       description: "Prometheus와 연동하여 실시간 모니터링 대시보드를 구축할 수 있습니다.",
     },
   ],
