@@ -348,21 +348,24 @@ function App() {
           <h2 className="text-2xl font-bold text-slate-800 mb-6 text-center">SKILLS</h2>
           <div id="skills-content" className="bg-white p-8 rounded-xl shadow-sm">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {Object.entries(skillsData).map(([category, skills]: [string, string[]]) => (
-                <div key={category}>
-                  <h4 className="font-bold text-slate-700 mb-3">{category}</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {skills.map((skill: string, index: number) => (
-                      <span
-                        key={index}
-                        className="bg-slate-100 text-slate-700 text-sm font-medium px-3 py-1 rounded-full"
-                      >
-                        {skill}
-                      </span>
-                    ))}
+              {Object.entries(skillsData).map(
+                ([category, skills]: [string, Array<{ name: string; icon: string }>]) => (
+                  <div key={category}>
+                    <h4 className="font-bold text-slate-700 mb-3">{category}</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {skills.map((skill: { name: string; icon: string }, index: number) => (
+                        <span
+                          key={index}
+                          className="bg-slate-100 text-slate-700 text-sm font-medium px-3 py-1.5 rounded-full flex items-center gap-2"
+                        >
+                          <i className={skill.icon}></i>
+                          {skill.name}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
+                )
+              )}
             </div>
           </div>
         </section>
@@ -386,10 +389,7 @@ function App() {
             </div>
           </div>
         </section>
-
-        <footer className="text-center text-slate-500 pt-8 border-t">
-          <p>&copy; 2024 이인준. All Rights Reserved.</p>
-        </footer>
+        <footer className="text-center text-slate-500 pt-8 border-t"></footer>
       </div>
     </div>
   );

@@ -207,12 +207,43 @@ export const projectData = {
 };
 
 export const skillsData = {
-  Languages: ["Java", "Python", "JavaScript", "SQL"],
-  "Frameworks & Libraries": ["Spring Boot", "JPA", "QueryDSL", "Django", "FastAPI"],
-  Database: ["MySQL", "PostgreSQL(PostGIS)", "MongoDB"],
-  "Infra & DevOps": ["AWS (ECC2, S3)", "Docker", "Jenkins", "Prometheus", "Grafana"],
-  "Message Queue & Cache": ["Kafka", "RabbitMQ", "Redis"],
-  "Tools & Collaboration": ["Git", "Jira", "Notion", "MatterMost", "Figma"],
+  Languages: [
+    { name: "Java", icon: "fa-brands fa-java" },
+    { name: "Python", icon: "fa-brands fa-python" },
+    { name: "JavaScript", icon: "fa-brands fa-js" },
+    { name: "SQL", icon: "fa-solid fa-database" },
+  ],
+  "Frameworks & Libraries": [
+    { name: "Spring Boot", icon: "fa-solid fa-leaf" },
+    { name: "JPA", icon: "fa-solid fa-layer-group" },
+    { name: "QueryDSL", icon: "fa-solid fa-filter" },
+    { name: "Django", icon: "fa-brands fa-python" },
+    { name: "FastAPI", icon: "fa-solid fa-bolt" },
+  ],
+  Database: [
+    { name: "MySQL", icon: "fa-solid fa-database" },
+    { name: "PostgreSQL(PostGIS)", icon: "fa-solid fa-database" },
+    { name: "MongoDB", icon: "fa-solid fa-database" },
+  ],
+  "Infra & DevOps": [
+    { name: "AWS (ECC2, S3)", icon: "fa-brands fa-aws" },
+    { name: "Docker", icon: "fa-brands fa-docker" },
+    { name: "Jenkins", icon: "fa-brands fa-jenkins" },
+    { name: "Prometheus", icon: "fa-solid fa-chart-line" },
+    { name: "Grafana", icon: "fa-solid fa-chart-bar" },
+  ],
+  "Message Queue & Cache": [
+    { name: "Kafka", icon: "fa-solid fa-stream" },
+    { name: "RabbitMQ", icon: "fa-solid fa-comments" },
+    { name: "Redis", icon: "fa-solid fa-memory" },
+  ],
+  "Tools & Collaboration": [
+    { name: "Git", icon: "fa-brands fa-git-alt" },
+    { name: "Jira", icon: "fa-brands fa-jira" },
+    { name: "Notion", icon: "fa-solid fa-book" },
+    { name: "MatterMost", icon: "fa-solid fa-comment-dots" },
+    { name: "Figma", icon: "fa-brands fa-figma" },
+  ],
 };
 
 export const timelineData = [
