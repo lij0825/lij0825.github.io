@@ -27,10 +27,10 @@ function App() {
       setShowAllProjects(true);
     };
 
-    window.addEventListener('beforeprint', handleBeforePrint);
-    
+    window.addEventListener("beforeprint", handleBeforePrint);
+
     return () => {
-      window.removeEventListener('beforeprint', handleBeforePrint);
+      window.removeEventListener("beforeprint", handleBeforePrint);
     };
   }, []);
 
@@ -188,44 +188,49 @@ function App() {
               탭을 클릭하여 각 프로젝트의 상세 내용을 확인하실 수 있습니다.
             </p>
           </div>
-          
-          {/* 탭과 전체 보기 버튼 */}
-          <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-8">
-            <div className="flex border-b print:hidden">
-              {(Object.keys(projectData) as ProjectId[]).map((tabId) => {
-                const titles: Record<ProjectId, string> = {
-                  toudeuk: "터득(TOUDEUK)",
-                  library: "나의 작은 도서관",
-                  ssapick: "SSAPICK",
-                };
-                return (
-                  <button
-                    key={String(tabId)}
-                    onClick={() => {
-                      setActiveTab(tabId);
-                      setShowAllProjects(false);
-                    }}
-                    className={`tab-btn px-6 py-3 text-lg font-semibold border-b-2 ${
-                      activeTab === tabId && !showAllProjects
-                        ? "tab-active"
-                        : "border-transparent text-slate-500"
-                    }`}
-                  >
-                    {titles[tabId]}
-                  </button>
-                );
-              })}
-            </div>
-            
+
+          {/* 탭 */}
+          <div className="flex justify-center mb-4 border-b print:hidden">
+            {(Object.keys(projectData) as ProjectId[]).map((tabId) => {
+              const titles: Record<ProjectId, string> = {
+                toudeuk: "터득(TOUDEUK)",
+                library: "나의 작은 도서관",
+                ssapick: "SSAPICK",
+              };
+              return (
+                <button
+                  key={String(tabId)}
+                  onClick={() => {
+                    setActiveTab(tabId);
+                    setShowAllProjects(false);
+                  }}
+                  className={`tab-btn px-6 py-3 text-lg font-semibold border-b-2 ${
+                    activeTab === tabId && !showAllProjects
+                      ? "tab-active"
+                      : "border-transparent text-slate-500"
+                  }`}
+                >
+                  {titles[tabId]}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* 전체 보기 버튼 */}
+          <div className="flex justify-center mb-8">
             <button
               onClick={() => setShowAllProjects(!showAllProjects)}
-              className="print:hidden bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium px-5 py-2.5 rounded-lg transition-colors flex items-center gap-2"
+              className="print:hidden group relative px-6 py-2.5 rounded-lg font-medium transition-all duration-300 flex items-center gap-2 border-2 border-blue-500 text-blue-600 hover:bg-blue-500 hover:text-white hover:shadow-lg"
             >
-              <i className={`fas fa-${showAllProjects ? 'grip-lines' : 'list'}`}></i>
-              {showAllProjects ? '탭으로 보기' : '전체 프로젝트 보기'}
+              <i
+                className={`fas fa-${
+                  showAllProjects ? "chevron-up" : "chevron-down"
+                } transition-transform group-hover:scale-110`}
+              ></i>
+              <span>{showAllProjects ? "접기" : "전체 프로젝트 보기"}</span>
             </button>
           </div>
-          
+
           {/* 프로젝트 내용 */}
           {showAllProjects ? (
             // 전체 프로젝트 보기
@@ -233,7 +238,10 @@ function App() {
               {(Object.keys(projectData) as ProjectId[]).map((projectId) => {
                 const data = projectData[projectId];
                 return (
-                  <div key={projectId} className="bg-white p-6 md:p-8 rounded-xl shadow-sm page-break-inside-avoid">
+                  <div
+                    key={projectId}
+                    className="bg-white p-6 md:p-8 rounded-xl shadow-sm page-break-inside-avoid"
+                  >
                     <h3 className="text-3xl font-bold text-slate-800">{data.title}</h3>
                     <p className="text-lg text-slate-500 mt-2 mb-6">{data.summary}</p>
                     <div className="flex flex-wrap gap-x-6 gap-y-2 mb-6">
@@ -260,12 +268,14 @@ function App() {
                         <h4 className="text-xl font-bold text-slate-800 border-b pb-2 mb-4">
                           문제 해결 과정 (Action)
                         </h4>
-                        {data.actions.map((action: { title: string; detail: string }, index: number) => (
-                          <div key={index} className="mb-4">
-                            <h5 className="font-semibold text-slate-700">{action.title}</h5>
-                            <p className="text-slate-600 whitespace-pre-line">{action.detail}</p>
-                          </div>
-                        ))}
+                        {data.actions.map(
+                          (action: { title: string; detail: string }, index: number) => (
+                            <div key={index} className="mb-4">
+                              <h5 className="font-semibold text-slate-700">{action.title}</h5>
+                              <p className="text-slate-600 whitespace-pre-line">{action.detail}</p>
+                            </div>
+                          )
+                        )}
                       </div>
                       <div>
                         <h4 className="text-xl font-bold text-slate-800 border-b pb-2 mb-4">
@@ -303,6 +313,28 @@ function App() {
                   </div>
                 );
               })}
+
+              {/* 하단 접기 버튼 */}
+              <div className="flex justify-center mt-8">
+                <button
+                  onClick={() => {
+                    // 현재 스크롤 위치 저장
+                    const currentScroll = window.scrollY;
+
+                    // 접기
+                    setShowAllProjects(false);
+
+                    // DOM 업데이트 후 스크롤 위치 복원
+                    requestAnimationFrame(() => {
+                      window.scrollTo(0, currentScroll);
+                    });
+                  }}
+                  className="print:hidden group relative px-6 py-2.5 rounded-lg font-medium transition-all duration-300 flex items-center gap-2 border-2 border-blue-500 text-blue-600 hover:bg-blue-500 hover:text-white hover:shadow-lg"
+                >
+                  <i className="fas fa-chevron-up transition-transform group-hover:scale-110"></i>
+                  <span>접기</span>
+                </button>
+              </div>
             </div>
           ) : (
             // 탭으로 보기 (기존)

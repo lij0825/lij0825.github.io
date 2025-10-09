@@ -51,23 +51,23 @@ body {
   body {
     background-color: white;
   }
-  
+
   /* 페이지 여백 조정 */
   @page {
     margin: 1.5cm;
   }
-  
+
   /* 차트 크기 조정 */
   .chart-container {
     max-height: 200px;
     page-break-inside: avoid;
   }
-  
+
   /* 섹션 페이지 나누기 방지 */
   section {
     page-break-inside: avoid;
   }
-  
+
   /* print:hidden 클래스가 적용된 요소 숨김 (탭, 버튼 등) */
   .print\:hidden {
     display: none !important;
