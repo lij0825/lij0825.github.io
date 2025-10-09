@@ -6,6 +6,19 @@ body {
   color: #1e293b;
 }
 
+/* Simple Icons 브랜드 컬러 */
+.si-jenkins {
+  color: #D24939;
+}
+
+.si-mattermost {
+  color: #0058CC;
+}
+
+.si-hibernate {
+  color: #59666C;
+}
+
 .chart-container {
   position: relative;
   width: 100%;

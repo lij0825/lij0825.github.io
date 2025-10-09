@@ -210,28 +210,28 @@ export const skillsData = {
   Languages: [
     {
       name: "Java",
-      icon: "fa-brands fa-java",
+      icon: "iconify:logos:java",
       level: 4,
       description:
         "OOP와 SOLID 원칙을 적용하여 응집력 있고 유지보수 가능한 객체지향 설계를 추구합니다. Stream을 사용한 함수형 프로그래밍에 능통합니다. Optional을 사용하여 NPE를 발생시키지 않도록 노력합니다.",
     },
     {
       name: "Python",
-      icon: "fa-brands fa-python",
+      icon: "iconify:logos:python",
       level: 3,
       description:
         "Django와 FastAPI를 활용한 백엔드 개발 경험이 있으며, 데이터 처리와 머신러닝 모델 배포에 활용합니다.",
     },
     {
       name: "TypeScript",
-      icon: "devicon-typescript-plain",
+      icon: "iconify:logos:typescript-icon",
       level: 4,
       description:
         "정적 타입과 strictNullChecks로 코드 안정성을 높이고 컴파일 시 오류를 방지합니다. 제네릭, 인터페이스, 유니온 타입으로 유연하고 표현력 있는 코드를 작성합니다. async/await와 Promise로 비동기 프로그래밍의 가독성을 향상시킵니다.",
     },
     {
       name: "SQL",
-      icon: "fa-solid fa-database",
+      icon: "iconify:vscode-icons:file-type-sql",
       level: 3,
       description:
         "관계형 DB에 맞는 ERD를 설계하고, 정규화와 반정규화를 할 수 있습니다. 다중 JOIN 쿼리와 인덱스를 사용하여 성능을 최적화할 수 있습니다.",
@@ -240,34 +240,34 @@ export const skillsData = {
   "Frameworks & Libraries": [
     {
       name: "Spring Boot",
-      icon: "fa-solid fa-leaf",
+      icon: "iconify:logos:spring-icon",
       level: 4,
       description:
         "Spring Security와 OAuth2를 사용하여 인증·인가 로직을 처리할 수 있습니다. JPA와 QueryDSL에 대한 높은 이해로 동적 쿼리를 구현할 수 있습니다.",
     },
     {
       name: "JPA",
-      icon: "fa-solid fa-layer-group",
+      icon: "iconify:simple-icons:hibernate",
       level: 4,
       description:
         "영속성 컨텍스트와 엔티티 생명주기를 이해하고, N+1 문제를 해결할 수 있습니다. Fetch Join과 배치 사이즈 최적화에 능숙합니다.",
     },
     {
       name: "QueryDSL",
-      icon: "fa-solid fa-filter",
+      icon: "iconify:simple-icons:hibernate",
       level: 4,
       description:
         "타입 안전한 동적 쿼리 작성이 가능하며, 복잡한 조회 로직을 깔끔하게 구현할 수 있습니다.",
     },
     {
       name: "Django",
-      icon: "fa-brands fa-python",
+      icon: "iconify:logos:django-icon",
       level: 3,
       description: "Django ORM과 REST Framework를 활용한 API 개발 경험이 있습니다.",
     },
     {
       name: "FastAPI",
-      icon: "fa-solid fa-bolt",
+      icon: "iconify:logos:fastapi-icon",
       level: 3,
       description:
         "비동기 처리와 자동 문서화 기능을 활용하여 고성능 API를 구축할 수 있습니다. AI 모델 배포에 활용한 경험이 있습니다.",
@@ -276,21 +276,21 @@ export const skillsData = {
   Database: [
     {
       name: "MySQL",
-      icon: "fa-solid fa-database",
+      icon: "iconify:logos:mysql",
       level: 4,
       description:
         "인덱스 설계와 쿼리 최적화에 능숙하며, Master-Replica 구조를 구축한 경험이 있습니다.",
     },
     {
       name: "PostgreSQL(PostGIS)",
-      icon: "fa-solid fa-database",
+      icon: "iconify:logos:postgresql",
       level: 3,
       description:
         "PostGIS를 활용한 위치 기반 서비스 개발 경험이 있으며, 공간 인덱스를 활용한 성능 최적화가 가능합니다.",
     },
     {
       name: "MongoDB",
-      icon: "fa-solid fa-database",
+      icon: "iconify:logos:mongodb-icon",
       level: 3,
       description: "NoSQL 데이터 모델링과 집계 파이프라인을 활용한 데이터 처리가 가능합니다.",
     },
@@ -298,34 +298,34 @@ export const skillsData = {
   "Infra & DevOps": [
     {
       name: "AWS (EC2, S3)",
-      icon: "fa-brands fa-aws",
+      icon: "iconify:logos:aws",
       level: 3,
       description:
         "EC2 인스턴스 관리와 S3를 활용한 정적 파일 호스팅 경험이 있으며, IAM 설정과 VPC 구성이 가능합니다.",
     },
     {
       name: "Docker",
-      icon: "fa-brands fa-docker",
+      icon: "iconify:logos:docker-icon",
       level: 3,
       description:
         "다양한 프로젝트를 도커로 빌드한 경험이 있으며, 도커 컴포즈를 사용한 멀티 컨테이너 환경 구성이 가능합니다.",
     },
     {
       name: "Jenkins",
-      icon: "fa-brands fa-jenkins",
+      icon: "iconify:logos:jenkins",
       level: 3,
       description:
         "파이프라인을 작성하여 CI/CD를 자동화할 수 있으며, Blue/Green 배포를 통한 무중단 배포 구성 경험이 있습니다.",
     },
     {
       name: "Prometheus",
-      icon: "fa-solid fa-chart-line",
+      icon: "iconify:logos:prometheus",
       level: 2,
       description: "시스템 메트릭 수집과 모니터링 대시보드 구축 경험이 있습니다.",
     },
     {
       name: "Grafana",
-      icon: "fa-solid fa-chart-bar",
+      icon: "iconify:logos:grafana",
       level: 2,
       description: "Prometheus와 연동하여 실시간 모니터링 대시보드를 구축할 수 있습니다.",
     },
@@ -333,19 +333,19 @@ export const skillsData = {
   "Message Queue & Cache": [
     {
       name: "Kafka",
-      icon: "fa-solid fa-stream",
+      icon: "iconify:logos:kafka-icon",
       level: 2,
       description: "이벤트 기반 아키텍처를 이해하고, 기본적인 프로듀서/컨슈머 구현이 가능합니다.",
     },
     {
       name: "RabbitMQ",
-      icon: "fa-solid fa-comments",
+      icon: "iconify:logos:rabbitmq-icon",
       level: 3,
       description: "STOMP 프로토콜을 활용한 실시간 메시징 시스템 구축 경험이 있습니다.",
     },
     {
       name: "Redis",
-      icon: "fa-solid fa-memory",
+      icon: "iconify:logos:redis",
       level: 4,
       description:
         "분산 락, 캐싱, Sorted Set을 활용한 다양한 문제 해결 경험이 있습니다. TTL을 활용한 동시성 제어와 성능 최적화에 능숙합니다.",
@@ -354,32 +354,32 @@ export const skillsData = {
   "Tools & Collaboration": [
     {
       name: "Git",
-      icon: "fa-brands fa-git-alt",
+      icon: "iconify:logos:git-icon",
       level: 4,
       description:
         "브랜치 전략과 Merge Conflict 해결에 능숙하며, PR 기반 코드 리뷰 문화에 익숙합니다.",
     },
     {
       name: "Jira",
-      icon: "fa-brands fa-jira",
+      icon: "iconify:logos:jira",
       level: 3,
       description: "Epic-Story-Task 구조를 이해하고, 이슈 관리와 스프린트 계획 수립이 가능합니다.",
     },
     {
       name: "Notion",
-      icon: "fa-solid fa-book",
+      icon: "iconify:logos:notion-icon",
       level: 4,
       description: "팀 문서화와 협업에 적극 활용합니다.",
     },
     {
       name: "MatterMost",
-      icon: "fa-solid fa-comment-dots",
+      icon: "iconify:logos:mattermost-icon",
       level: 3,
       description: "팀 커뮤니케이션 도구로 활용하며, 알림 자동화 연동 경험이 있습니다.",
     },
     {
       name: "Figma",
-      icon: "fa-brands fa-figma",
+      icon: "iconify:logos:figma",
       level: 2,
       description: "디자인 시스템을 이해하고, 디자이너와의 협업이 가능합니다.",
     },

@@ -367,7 +367,14 @@ function App() {
                         ) => (
                           <div key={index} className="relative group">
                             <span className="bg-slate-100 text-slate-700 text-sm font-medium px-3 py-1.5 rounded-full cursor-pointer transition-colors hover:bg-blue-100 hover:text-blue-800 flex items-center gap-2">
-                              <i className={skill.icon}></i>
+                              {skill.icon.startsWith("iconify:") ? (
+                                <span
+                                  className="iconify w-4 h-4"
+                                  data-icon={skill.icon.replace("iconify:", "")}
+                                ></span>
+                              ) : (
+                                <i className={skill.icon}></i>
+                              )}
                               {skill.name}
                             </span>
                             {/* 툴팁 */}
