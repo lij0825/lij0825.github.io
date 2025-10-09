@@ -212,6 +212,9 @@ function App() {
           </p>
         </section>
 
+        {/* 구분선 */}
+        <div className="border-t border-slate-200 dark:border-gray-700 my-8 md:my-12"></div>
+
         <section id="key-achievements" className="mb-8 md:mb-12">
           <h2 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-white mb-6 text-center">
             핵심 성과 지표
@@ -243,6 +246,9 @@ function App() {
             </div>
           </div>
         </section>
+
+        {/* 구분선 */}
+        <div className="border-t border-slate-200 dark:border-gray-700 my-8 md:my-12"></div>
 
         <section id="projects" className="mb-8 md:mb-12">
           <h2 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-white mb-4 md:mb-6 text-center">
@@ -434,6 +440,9 @@ function App() {
           )}
         </section>
 
+        {/* 구분선 */}
+        <div className="border-t border-slate-200 dark:border-gray-700 my-8 md:my-12"></div>
+
         <section id="skills" className="mb-8 md:mb-12">
           <h2 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-white mb-4 md:mb-6 text-center">
             SKILLS
@@ -511,6 +520,9 @@ function App() {
             </div>
           </div>
         </section>
+
+        {/* 구분선 */}
+        <div className="border-t border-slate-200 dark:border-gray-700 my-8 md:my-12"></div>
 
         <section id="timeline" className="mb-8 md:mb-12">
           <h2 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-white mb-6 md:mb-8 text-center">
