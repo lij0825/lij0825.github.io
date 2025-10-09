@@ -440,7 +440,7 @@ function App() {
           </h2>
           <p className="text-center text-slate-500 dark:text-gray-400 text-xs md:text-sm mb-4 md:mb-6">
             <i className="fas fa-info-circle mr-2"></i>
-            스킬을 누르면 상세 정보와 숙련도를 확인할 수 있습니다
+            스킬을 탭하시면 상세 정보를 확인할 수 있습니다
           </p>
           <div
             id="skills-content"
