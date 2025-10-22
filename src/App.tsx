@@ -447,10 +447,6 @@ function App() {
           <h2 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-white mb-4 md:mb-6 text-center">
             SKILLS
           </h2>
-          <p className="text-center text-slate-500 dark:text-gray-400 text-xs md:text-sm mb-4 md:mb-6">
-            <i className="fas fa-info-circle mr-2"></i>
-            스킬을 탭하시면 상세 정보를 확인할 수 있습니다
-          </p>
           <div
             id="skills-content"
             className="bg-white dark:bg-gray-800 p-4 md:p-6 lg:p-8 rounded-xl shadow-sm"
@@ -471,46 +467,20 @@ function App() {
                           skill: { name: string; icon: string; level: number; description: string },
                           index: number
                         ) => (
-                          <div key={index} className="relative group">
-                            <span className="bg-slate-100 dark:bg-gray-700 text-slate-700 dark:text-gray-200 text-xs md:text-sm font-medium px-2.5 py-1 md:px-3 md:py-1.5 rounded-full cursor-pointer transition-colors hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-800 dark:hover:text-blue-200 flex items-center gap-1.5 md:gap-2">
-                              {skill.icon.startsWith("iconify:") ? (
-                                <span
-                                  className="iconify w-3.5 h-3.5 md:w-4 md:h-4"
-                                  data-icon={skill.icon.replace("iconify:", "")}
-                                ></span>
-                              ) : (
-                                <i className={skill.icon}></i>
-                              )}
-                              {skill.name}
-                            </span>
-                            {/* 툴팁 */}
-                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 md:w-72 p-3 md:p-4 bg-white dark:bg-gray-800 rounded-lg shadow-xl invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-opacity duration-300 z-10 border border-slate-200 dark:border-gray-600">
-                              <div className="flex items-center justify-between mb-2">
-                                <h5 className="font-bold text-slate-800 dark:text-white">
-                                  {skill.name}
-                                </h5>
-                                <div className="flex space-x-1 text-sm">
-                                  {[1, 2, 3, 4, 5].map((star) => (
-                                    <i
-                                      key={star}
-                                      className={`fa-star ${
-                                        star <= skill.level
-                                          ? "fas text-amber-400"
-                                          : "far text-gray-300 dark:text-gray-600"
-                                      }`}
-                                    ></i>
-                                  ))}
-                                </div>
-                              </div>
-                              <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed">
-                                {skill.description}
-                              </p>
-                              {/* 툴팁 화살표 */}
-                              <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px">
-                                <div className="border-8 border-transparent border-t-white dark:border-t-gray-800"></div>
-                              </div>
-                            </div>
-                          </div>
+                          <span
+                            key={index}
+                            className="bg-slate-100 dark:bg-gray-700 text-slate-700 dark:text-gray-200 text-xs md:text-sm font-medium px-2.5 py-1 md:px-3 md:py-1.5 rounded-full transition-colors hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-800 dark:hover:text-blue-200 flex items-center gap-1.5 md:gap-2"
+                          >
+                            {skill.icon.startsWith("iconify:") ? (
+                              <span
+                                className="iconify w-3.5 h-3.5 md:w-4 md:h-4"
+                                data-icon={skill.icon.replace("iconify:", "")}
+                              ></span>
+                            ) : (
+                              <i className={skill.icon}></i>
+                            )}
+                            {skill.name}
+                          </span>
                         )
                       )}
                     </div>
