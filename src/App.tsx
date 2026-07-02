@@ -255,8 +255,8 @@ function App() {
 					</div>
 
 					{/* Summary 한 줄 */}
-					<p className="max-w-2xl mx-auto text-slate-300 text-sm md:text-base leading-relaxed mb-8 px-4">
-						Redis를 활용한 동시성 제어, 검색 최적화 등으로 서비스 성능을 <span className="text-blue-400 font-semibold">90% 이상 개선</span>하며
+					<p className="max-w-2xl mx-auto text-slate-600 dark:text-slate-300 text-sm md:text-base leading-relaxed mb-8 px-4">
+						Redis를 활용한 동시성 제어, 검색 최적화 등으로 서비스 성능을 <span className="text-blue-600 dark:text-blue-400 font-semibold">90% 이상 개선</span>하며
 						성능 병목을 해결하는 경험을 쌓았습니다.
 						테스트 자동화와 CI/CD 파이프라인 구축을 통해 안정적인 개발 문화를 만드는 데 기여했습니다.
 					</p>
