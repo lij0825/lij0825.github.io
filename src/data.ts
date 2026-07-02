@@ -393,7 +393,7 @@ export const timelineData = [
     description: "Java 트랙",
   },
   {
-    period: "2017.03 - 2023.02",
+    period: "2017.03 - 2023.08",
     title: "강원대학교 졸업",
     description: "컴퓨터정보통신공학부",
   },
