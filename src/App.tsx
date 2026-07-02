@@ -635,9 +635,7 @@ function App() {
 					</div>
 				</section>
 
-				<footer className="text-center text-slate-400 dark:text-gray-600 pt-8 border-t border-slate-200 dark:border-gray-700 pb-8">
-					<p className="text-sm">© 2024 이인준. Built with React + TypeScript.</p>
-				</footer>
+	
 			</div>
 		</div>
 	);
