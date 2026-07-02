@@ -247,12 +247,6 @@ function App() {
 					<h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-4 hero-title">
 						이인준
 					</h1>
-					{/* 직업명 */}
-					<div className="h-10 md:h-12 flex items-center justify-center mb-6">
-						<span className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 font-medium">
-							Backend Engineer
-						</span>
-					</div>
 
 					{/* Summary 한 줄 */}
 					<p className="max-w-2xl mx-auto text-slate-600 dark:text-slate-300 text-sm md:text-base leading-relaxed mb-8 px-4">
