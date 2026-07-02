@@ -2,135 +2,388 @@
 
 @variant dark (&:where(.dark, .dark *));
 
-/* 다크 모드 전역 스타일 */
+/* ===== 전역 설정 ===== */
 .dark {
-  color-scheme: dark;
+	color-scheme: dark;
 }
 
 body {
-  font-family: "Pretendard", sans-serif;
-  background-color: #f8fafc;
-  color: #1e293b;
-  transition: background-color 0.3s, color 0.3s;
+	font-family: "Pretendard", sans-serif;
+	background-color: #f8fafc;
+	color: #1e293b;
+	transition: background-color 0.3s, color 0.3s;
 }
 
 .dark body {
-  background-color: #111827;
-  color: #f3f4f6;
+	background-color: #0f172a;
+	color: #f3f4f6;
 }
 
-/* Simple Icons 브랜드 컬러 */
-.si-jenkins {
-  color: #d24939;
+/* ===== Hero 섹션 ===== */
+.hero-section {
+	background: #0f172a;
 }
 
-.si-mattermost {
-  color: #0058cc;
+.hero-bg {
+	background: radial-gradient(ellipse at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+		radial-gradient(ellipse at 80% 20%, rgba(99, 102, 241, 0.12) 0%, transparent 50%),
+		radial-gradient(ellipse at 50% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+		linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
 }
 
-.si-hibernate {
-  color: #59666c;
+/* 배경 장식 orbs */
+.hero-orb {
+	position: absolute;
+	border-radius: 50%;
+	filter: blur(80px);
+	opacity: 0.15;
+	animation: orb-drift 8s ease-in-out infinite;
 }
 
+.hero-orb-1 {
+	width: 400px;
+	height: 400px;
+	background: #3b82f6;
+	top: -100px;
+	left: -100px;
+	animation-delay: 0s;
+}
+
+.hero-orb-2 {
+	width: 300px;
+	height: 300px;
+	background: #8b5cf6;
+	bottom: -50px;
+	right: -50px;
+	animation-delay: 3s;
+}
+
+.hero-orb-3 {
+	width: 250px;
+	height: 250px;
+	background: #10b981;
+	top: 50%;
+	right: 20%;
+	animation-delay: 6s;
+}
+
+@keyframes orb-drift {
+	0%, 100% { transform: translate(0, 0) scale(1); }
+	33% { transform: translate(20px, -20px) scale(1.05); }
+	66% { transform: translate(-15px, 15px) scale(0.95); }
+}
+
+/* Hero 콘텐츠 애니메이션 */
+.fade-in-up {
+	animation: fadeInUp 0.9s ease-out both;
+}
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Hero 배지 */
+.hero-badge {
+	animation: fadeInUp 0.9s ease-out 0.1s both;
+}
+
+.hero-title {
+	animation: fadeInUp 0.9s ease-out 0.2s both;
+	background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 50%, #bfdbfe 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+/* 타이핑 커서 */
+.typing-cursor {
+	display: inline-block;
+	animation: blink 0.8s step-end infinite;
+	color: #60a5fa;
+	margin-left: 2px;
+}
+
+@keyframes blink {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0; }
+}
+
+/* Hero 버튼 */
+.hero-btn {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.6rem 1.25rem;
+	border-radius: 0.5rem;
+	font-size: 0.875rem;
+	font-weight: 500;
+	transition: all 0.25s ease;
+	text-decoration: none;
+}
+
+.hero-btn-primary {
+	background: rgba(59, 130, 246, 0.2);
+	color: #93c5fd;
+	border: 1px solid rgba(59, 130, 246, 0.4);
+}
+
+.hero-btn-primary:hover {
+	background: #3b82f6;
+	color: #ffffff;
+	box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+}
+
+.hero-btn-secondary {
+	background: rgba(255, 255, 255, 0.05);
+	color: #94a3b8;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-btn-secondary:hover {
+	background: rgba(255, 255, 255, 0.1);
+	color: #e2e8f0;
+}
+
+/* 스크롤 힌트 */
+.scroll-hint {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	animation: fadeInUp 0.9s ease-out 0.8s both;
+	margin-top: 1rem;
+}
+
+.scroll-arrow {
+	width: 20px;
+	height: 20px;
+	border-right: 2px solid #60a5fa;
+	border-bottom: 2px solid #60a5fa;
+	transform: rotate(45deg);
+	animation: scroll-bounce 1.5s ease-in-out infinite;
+}
+
+@keyframes scroll-bounce {
+	0%, 100% { transform: rotate(45deg) translateY(0); opacity: 1; }
+	50% { transform: rotate(45deg) translateY(6px); opacity: 0.5; }
+}
+
+/* ===== 섹션 공통 ===== */
+.section-title {
+	font-size: 1.5rem;
+	font-weight: 800;
+	text-align: center;
+	margin-bottom: 1.5rem;
+	color: #1e293b;
+}
+
+.dark .section-title {
+	color: #f1f5f9;
+}
+
+@media (min-width: 768px) {
+	.section-title {
+		font-size: 2rem;
+		margin-bottom: 2rem;
+	}
+}
+
+.section-title-accent {
+	position: relative;
+	display: inline-block;
+	padding-bottom: 0.5rem;
+}
+
+.section-title-accent::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 60px;
+	height: 3px;
+	background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+	border-radius: 9999px;
+}
+
+.section-divider {
+	border-top: 1px solid #e2e8f0;
+	margin: 2.5rem 0 3rem;
+}
+
+.dark .section-divider {
+	border-color: #1e293b;
+}
+
+/* ===== 성과 카드 ===== */
+.achievement-card {
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.achievement-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.dark .achievement-card:hover {
+	box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== 키워드 뱃지 ===== */
+.keyword-badge {
+	display: inline-block;
+	padding: 0.3rem 0.85rem;
+	background: linear-gradient(135deg, #eff6ff, #e0f2fe);
+	color: #1d4ed8;
+	border-radius: 9999px;
+	font-size: 0.75rem;
+	font-weight: 600;
+	border: 1px solid #bfdbfe;
+	transition: all 0.2s ease;
+}
+
+.keyword-badge:hover {
+	background: linear-gradient(135deg, #3b82f6, #6366f1);
+	color: white;
+	border-color: transparent;
+	transform: scale(1.05);
+}
+
+.dark .keyword-badge {
+	background: rgba(59, 130, 246, 0.1);
+	color: #93c5fd;
+	border-color: rgba(59, 130, 246, 0.3);
+}
+
+.dark .keyword-badge:hover {
+	background: linear-gradient(135deg, #3b82f6, #6366f1);
+	color: white;
+	border-color: transparent;
+}
+
+/* ===== 차트 컨테이너 ===== */
 .chart-container {
-  position: relative;
-  width: 100%;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  height: 200px;
-  max-height: 250px;
-  overflow: hidden;
+	position: relative;
+	width: 100%;
+	max-width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	height: 200px;
+	max-height: 250px;
+	overflow: hidden;
 }
 
 .dark .chart-container {
-  filter: brightness(0.9);
+	filter: brightness(0.9);
 }
 
 @media (min-width: 768px) {
-  .chart-container {
-    height: 250px;
-    max-height: 300px;
-  }
+	.chart-container {
+		height: 250px;
+		max-height: 300px;
+	}
 }
 
 @media (min-width: 1024px) {
-  .chart-container {
-    height: 300px;
-    max-height: 350px;
-  }
+	.chart-container {
+		height: 300px;
+		max-height: 350px;
+	}
 }
 
+/* ===== 탭 스타일 ===== */
 .tab-active {
-  border-color: #3b82f6;
-  color: #3b82f6;
-  background-color: #eff6ff;
+	border-color: #3b82f6;
+	color: #3b82f6;
+	background-color: #eff6ff;
 }
 
 .dark .tab-active {
-  border-color: #60a5fa;
-  color: #60a5fa;
-  background-color: #1e3a8a;
+	border-color: #60a5fa;
+	color: #60a5fa;
+	background-color: #1e3a8a;
 }
 
+/* ===== 타임라인 ===== */
 .timeline-item::before {
-  content: "";
-  position: absolute;
-  left: -1.25rem;
-  top: 0.375rem;
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 9999px;
-  background-color: #3b82f6;
-  border: 2px solid #eff6ff;
+	content: "";
+	position: absolute;
+	left: -1.25rem;
+	top: 0.375rem;
+	width: 0.5rem;
+	height: 0.5rem;
+	border-radius: 9999px;
+	background: linear-gradient(135deg, #3b82f6, #6366f1);
+	border: 2px solid #eff6ff;
+	box-shadow: 0 0 6px rgba(59, 130, 246, 0.5);
 }
 
 @media (min-width: 768px) {
-  .timeline-item::before {
-    left: -1.75rem;
-    top: 0.5rem;
-    width: 0.75rem;
-    height: 0.75rem;
-  }
+	.timeline-item::before {
+		left: -1.75rem;
+		top: 0.5rem;
+		width: 0.75rem;
+		height: 0.75rem;
+	}
 }
 
 @media (min-width: 1024px) {
-  .timeline-item::before {
-    left: -2.375rem;
-    width: 1rem;
-    height: 1rem;
-  }
+	.timeline-item::before {
+		left: -2.375rem;
+		width: 1rem;
+		height: 1rem;
+	}
 }
 
+/* ===== Simple Icons 브랜드 컬러 ===== */
+.si-jenkins {
+	color: #d24939;
+}
+
+.si-mattermost {
+	color: #0058cc;
+}
+
+.si-hibernate {
+	color: #59666c;
+}
+
+/* ===== 인쇄/PDF 스타일 ===== */
 .page-break-inside-avoid {
-  page-break-inside: avoid;
-  break-inside: avoid;
+	page-break-inside: avoid;
+	break-inside: avoid;
 }
 
-/* 인쇄/PDF 스타일 */
 @media print {
-  body {
-    background-color: white;
-  }
+	body {
+		background-color: white;
+	}
 
-  /* 페이지 여백 조정 */
-  @page {
-    margin: 1.5cm;
-  }
+	.hero-section {
+		min-height: unset;
+		padding: 2rem;
+		background: #0f172a !important;
+	}
 
-  /* 차트 크기 조정 */
-  .chart-container {
-    max-height: 200px;
-    page-break-inside: avoid;
-  }
+	@page {
+		margin: 1.5cm;
+	}
 
-  /* 섹션 페이지 나누기 방지 */
-  section {
-    page-break-inside: avoid;
-  }
+	.chart-container {
+		max-height: 200px;
+		page-break-inside: avoid;
+	}
 
-  /* print:hidden 클래스가 적용된 요소 숨김 (탭, 버튼 등) */
-  .print\:hidden {
-    display: none !important;
-  }
+	section {
+		page-break-inside: avoid;
+	}
+
+	.print\:hidden {
+		display: none !important;
+	}
 }
