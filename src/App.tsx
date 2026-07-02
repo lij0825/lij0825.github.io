@@ -223,7 +223,7 @@ function App() {
 			</div>
 
 			{/* Hero 섹션 */}
-			<section className="hero-section relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden px-4 bg-slate-50 dark:bg-gray-900">
+			<section className="hero-section relative min-h-[70vh] flex flex-col items-center justify-center text-center overflow-hidden px-4 bg-slate-50 dark:bg-gray-900">
 				{/* 배경 그라디언트 */}
 				<div className="hero-bg absolute inset-0"></div>
 				{/* 배경 장식 원 */}
