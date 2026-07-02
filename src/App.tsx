@@ -223,7 +223,7 @@ function App() {
 			</div>
 
 			{/* Hero 섹션 */}
-			<section className="hero-section relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden px-4 bg-slate-100 dark:bg-gray-900">
+			<section className="hero-section relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden px-4 bg-slate-50 dark:bg-gray-900">
 				{/* 배경 그라디언트 */}
 				<div className="hero-bg absolute inset-0"></div>
 				{/* 배경 장식 원 */}
@@ -233,7 +233,7 @@ function App() {
 
 				<div className="relative z-10 fade-in-up">
 					{/* 프로필 이미지 */}
-					<div className="flex justify-center mb-8">
+					<div className="flex justify-center mb-10">
 						<img
 							src="/profile.png"
 							alt="이인준 프로필"
@@ -241,22 +241,22 @@ function App() {
 						/>
 					</div>
 
-					<p className="text-blue-400 dark:text-blue-300 font-semibold text-sm md:text-base tracking-widest uppercase mb-3 hero-badge">
+					<p className="text-blue-500 dark:text-blue-300 font-semibold text-sm md:text-base tracking-widest uppercase mb-5 hero-badge">
 						Backend Developer
 					</p>
-					<h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-4 hero-title">
+					<h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-8 hero-title">
 						이인준
 					</h1>
 
 					{/* Summary 한 줄 */}
-					<p className="max-w-2xl mx-auto text-slate-600 dark:text-slate-300 text-sm md:text-base leading-relaxed mb-8 px-4">
+					<p className="max-w-2xl mx-auto text-slate-600 dark:text-slate-300 text-sm md:text-base leading-loose mb-10 px-4">
 						Redis를 활용한 동시성 제어, 검색 최적화 등으로 서비스 성능을 <span className="text-blue-600 dark:text-blue-400 font-semibold">90% 이상 개선</span>하며
 						성능 병목을 해결하는 경험을 쌓았습니다.
 						테스트 자동화와 CI/CD 파이프라인 구축을 통해 안정적인 개발 문화를 만드는 데 기여했습니다.
 					</p>
 
 					{/* 연락처 버튼 */}
-					<div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-8">
+					<div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
 						<a
 							href="mailto:dldlswms890@gmail.com"
 							className="hero-btn hero-btn-primary"
@@ -277,7 +277,11 @@ function App() {
 					</div>
 
 				</div>
+
+				{/* 하단 그라디언트 페이드 - 경계 완화 */}
+				<div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-slate-50 dark:to-gray-900 pointer-events-none z-10"></div>
 			</section>
+
 
 			<div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-6xl py-8 md:py-12">
 
