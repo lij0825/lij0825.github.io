@@ -17,35 +17,6 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 type ProjectId = keyof typeof projectData;
 
-// 타이핑 애니메이션 훅
-function useTypingAnimation(texts: string[], speed = 80, pause = 2000) {
-	const [displayText, setDisplayText] = useState("");
-	const [textIndex, setTextIndex] = useState(0);
-	const [charIndex, setCharIndex] = useState(0);
-	const [isDeleting, setIsDeleting] = useState(false);
-
-	useEffect(() => {
-		const current = texts[textIndex];
-		let timeout: ReturnType<typeof setTimeout>;
-
-		if (!isDeleting && charIndex < current.length) {
-			timeout = setTimeout(() => setCharIndex((c) => c + 1), speed);
-		} else if (!isDeleting && charIndex === current.length) {
-			timeout = setTimeout(() => setIsDeleting(true), pause);
-		} else if (isDeleting && charIndex > 0) {
-			timeout = setTimeout(() => setCharIndex((c) => c - 1), speed / 2);
-		} else if (isDeleting && charIndex === 0) {
-			setIsDeleting(false);
-			setTextIndex((i) => (i + 1) % texts.length);
-		}
-
-		setDisplayText(current.slice(0, charIndex));
-		return () => clearTimeout(timeout);
-	}, [charIndex, isDeleting, textIndex, texts, speed, pause]);
-
-	return displayText;
-}
-
 // 카운팅 애니메이션 훅
 function useCountUp(target: number, duration = 1500, isVisible: boolean = false) {
 	const [count, setCount] = useState(0);
@@ -119,12 +90,6 @@ function App() {
 		const saved = localStorage.getItem("darkMode");
 		return saved ? JSON.parse(saved) : true;
 	});
-
-	const typingText = useTypingAnimation(
-		["Backend Engineer", "성능 최적화 전문가", "문제 해결사", "클린 코드 지향"],
-		90,
-		2200
-	);
 
 	const { ref: statsRef, isVisible: statsVisible } = useIntersectionObserver(0.2);
 
@@ -258,7 +223,7 @@ function App() {
 			</div>
 
 			{/* Hero 섹션 */}
-			<section className="hero-section relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden px-4">
+			<section className="hero-section relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden px-4 bg-slate-100 dark:bg-gray-900">
 				{/* 배경 그라디언트 */}
 				<div className="hero-bg absolute inset-0"></div>
 				{/* 배경 장식 원 */}
@@ -282,11 +247,10 @@ function App() {
 					<h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mb-4 hero-title">
 						이인준
 					</h1>
-					{/* 타이핑 애니메이션 */}
+					{/* 직업명 */}
 					<div className="h-10 md:h-12 flex items-center justify-center mb-6">
-						<span className="text-xl md:text-2xl text-slate-300 font-medium">
-							{typingText}
-							<span className="typing-cursor">|</span>
+						<span className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 font-medium">
+							Backend Engineer
 						</span>
 					</div>
 
@@ -318,11 +282,6 @@ function App() {
 						</span>
 					</div>
 
-					{/* 스크롤 유도 */}
-					<div className="scroll-hint">
-						<span className="text-slate-400 text-xs tracking-widest uppercase mb-2 block">Scroll Down</span>
-						<div className="scroll-arrow"></div>
-					</div>
 				</div>
 			</section>
 
