@@ -273,11 +273,12 @@ function App() {
 						<strong className="text-green-600 dark:text-green-400">검색 응답 시간을 4700ms → 25ms</strong>로 줄였습니다.
 						<br />
 						<strong className="text-slate-700 dark:text-slate-300">SSAPICK</strong> 프로젝트에서는 레이어별{" "}
-						<strong className="text-blue-600 dark:text-blue-400">단위 테스트 141개</strong>를 작성하고
+						<strong className="text-blue-600 dark:text-blue-400">단위 테스트 141개</strong>를 작성하고,
 						<br />
-						Jenkins CI에 통합해 비정상 코드 배포를 원천 차단했습니다.
+						테스트 실패 시 빌드가 자동 중단되도록 Jenkins CI 파이프라인에 통합해
+						비정상 코드 배포를 원천 차단했습니다.
 						<br />
-						항상 더 나은 방법을 고민하고 개선하는 개발자입니다.
+						함께 일하고 싶은 개발자가 되겠습니다.
 					</p>
 					<div className="flex flex-wrap justify-center gap-2 mt-6">
 						{["SSAFY 11기", "동시성 제어", "성능 최적화", "Redis", "Kafka", "CI/CD", "테스트 자동화", "Spring Boot"].map((kw) => (
