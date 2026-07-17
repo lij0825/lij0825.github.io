@@ -99,9 +99,9 @@ export const projectData = {
 		actions: [
 			{
 				title: "📍 주변 도서 검색 속도 개선",
-				problem: "매 요청마다 DB에서 거리를 계산하는 방식으로 인해 평균 4.5초의 응답 지연이 발생했습니다.",
+				problem: "매 요청마다 DB에서 거리를 직접 계산하는 방식으로 인해 도서 검색 응답이 느린 문제가 있었습니다.",
 				solution: "PostgreSQL(PostGIS) 공간 인덱스를 도입하고 Redis 캐싱을 추가 적용했습니다.",
-				result: "주변 도서 검색 응답 시간 4.5초 → 300ms (93% 개선)을 달성했습니다.",
+				result: "PostGIS 공간 인덱스와 Redis 캐싱 도입으로 주변 도서 검색 응답 속도를 크게 개선했습니다.",
 			},
 			{
 				title: "💬 실시간 채팅 시스템 아키텍처 설계",
@@ -124,24 +124,9 @@ export const projectData = {
 		],
 		results: [
 			{
-				title: "위치 기반 검색 속도 93% 개선 (4.5초 → 300ms)",
+				title: "PostGIS 공간 인덱스 및 Redis 캐싱으로 위치 기반 검색 성능 개선",
 				detail:
-					"PostGIS 공간 인덱스와 Redis 캐싱을 결합하여 내 주변 도서 검색 응답 시간을 평균 4.5초에서 300ms 이내로 단축했습니다.",
-				chart: {
-					type: "bar" as const,
-					data: {
-						labels: ["주변 도서 검색 시간 (ms)"],
-						datasets: [
-							{ label: "Before", data: [4500], backgroundColor: "#fca5a5" },
-							{ label: "After (PostGIS + Redis)", data: [300], backgroundColor: "#86efac" },
-						],
-					},
-					options: {
-						maintainAspectRatio: false,
-						scales: { y: { beginAtZero: true } },
-						plugins: { title: { display: true, text: "위치 기반 검색 성능 비교" } },
-					},
-				},
+					"매 요청마다 DB에서 거리를 직접 계산하던 방식을 PostgreSQL(PostGIS) 공간 인덱스로 전환하고, 자주 조회되는 위치 데이터에 Redis 캐싱을 추가 적용하여 주변 도서 검색 응답 속도를 크게 개선했습니다.",
 			},
 			{
 				title: "풀스택 개발을 통한 핵심 기능 출시",
